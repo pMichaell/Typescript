@@ -1,4 +1,55 @@
-//using generics syntax for a function
+//Generics basics
+type numbArray = Array<number>;
+
+//simple function example
+const last = <T>(arr: T[]): T => {
+    return arr[arr.length - 1]
+}
+
+const lastNumber = last([1, 2, 3]);
+//explicit declaration of genetic type
+const lastString = last<string>(["1", "2", "3"]);
+
+//----------------------------------------------
+const makeArr = <T>(...args: T[]) => {
+    return args
+}
+
+//double generics
+//default generic value specified
+const doubleGenericsArray = <T,S = any>(x: T, y: S): [T, S] => {
+    return [x, y];
+}
+
+const v = doubleGenericsArray(1, 2);
+const v2 = doubleGenericsArray("a", 2);
+//explicit generic type assignment
+const v3 = doubleGenericsArray<number, null | string>(3, "a");
+
+//constraining generic types, objects have to have at least firstName and lastName to be proper types for this function
+const makeFullName = <T extends {firstName: string, lastName: string}>(obj: T) => {
+    return {
+        ...obj,
+        fullName: obj.firstName + " " + obj.firstName
+    }
+}
+
+const fullNameExample = makeFullName({firstName: "BOB", lastName: "Odenkirk", age: 51})
+// Line below doesn't work, because object doesn't have required values
+// const fullNameNotWorking = makeFullName({lastName: "Not working", age: 21})
+
+//--------------------------------------------------------------------------------------------
+//generics with interfaces
+interface  Tab<T> {
+    id: string;
+    position: number;
+    data: T;
+}
+
+type NumberTab  = Tab<number>;
+type StringTab = Tab<string>;
+
+//using generics syntax for useState clone
 function simpleState<T>(initial: T): [() => T, (toSet:T) => void] {
     let val: T = initial;
     return [

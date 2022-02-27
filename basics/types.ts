@@ -1,3 +1,9 @@
+//using type keyword for creating a type obviously (can be union type)
+//type can be constructed from other types
+type stringsType = string | string[];
+type numberType = number;
+type unionType  = stringsType | numberType;
+
 let userName: string = "Jack"
 
 let hasLoggedIn: boolean = true

@@ -1,3 +1,4 @@
+//typical tuple
 type ThreeDCoordinate = [x: number, y: number, z: number];
 
 function add3DCoordinate(c1: ThreeDCoordinate, c2:ThreeDCoordinate): ThreeDCoordinate {
@@ -9,6 +10,21 @@ function add3DCoordinate(c1: ThreeDCoordinate, c2:ThreeDCoordinate): ThreeDCoord
 }
 
 console.log(add3DCoordinate([1, 2, 3], [1, 2, 3]));
+
+//tuple with optional parameter
+type TupleWithOptional = [x?:string, y?: string];
+let tuplesWithOptionalsArray: TupleWithOptional[] = [
+    ["x", 'y'],
+    ["x"],
+    []
+    // this doesn't fit the type ["X", "y", "z"]
+]
+
+
+//tuple with rest operator
+type TupleWithRest = [x: string, y:number, ...z:string[]]
+let tupleWithRestExample: TupleWithRest = ["foo", 2137, "Anna", "Bell", "Peaks"]
+console.log(tupleWithRestExample);
 
 //cloning reacts useState
 function simpleStringState(initial: string): [() => string, (toSet:string) => void] {
