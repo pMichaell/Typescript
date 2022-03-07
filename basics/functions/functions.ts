@@ -32,3 +32,46 @@ export const undefinedProtectionFunction = (user: {first: string, last: string})
 
 export default addNumbers;
 
+function useState<T>(initialState: T): [() => T, (value: T) => void] {
+    let val:T = initialState;
+    return [
+        () => val,
+        (value) => {val = value}
+    ]
+}
+
+const [getState, setState] = useState("Maria");
+console.log(getState());
+
+//ensuring that this in a function can't be null
+function noNullThis(this: string) {
+    return this;
+}
+
+console.log(noNullThis.call("this is a string"));
+
+//generator function
+function* createFibonacciGenerator(){
+    let a = 0;
+    let b = 1;
+    while (true) {
+        yield a;
+        [a, b] = [b, a +b]
+    }
+}
+
+let fibonacciSequence = createFibonacciGenerator();
+
+for (let i = 0; i <= 4; ++i) {
+    console.log(fibonacciSequence.next())
+}
+
+//function call signatures
+type useStateCallSignature<T> = (initialState: T) => [() => T, (val: T) => void]
+const useStateWithSignature: useStateCallSignature<number> = (initialState) => {
+    let val = initialState;
+    return [
+        () => val,
+        (value) => {val = value}
+    ]
+}
