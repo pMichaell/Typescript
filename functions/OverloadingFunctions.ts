@@ -38,3 +38,18 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
 }
 
 console.log(parseCoordinate("x:21,y:23"));
+console.log(parseCoordinate({x: 30, y:50}))
+
+//union types in overloads
+
+const logOverloaded = (input: string | number, times?: number) => {
+    if (times) {
+        for (let x = 0; x <= times; ++x) {
+            console.log(input)
+        }
+        return
+    }
+    console.log(input)
+}
+
+logOverloaded("haha", 10)
