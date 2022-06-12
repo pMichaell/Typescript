@@ -5,12 +5,12 @@ const API_URL = "https://pokeapi.co/api/v2/pokemon";
 
 //specify promise return type
 
-const getPokemonList = async function getPokemonList(): Promise<PokemonList> {
+export const getPokemonList = async function getPokemonList(): Promise<PokemonList> {
   const listResp = await fetch(API_URL);
   return await listResp.json();
 };
 
-const getSinglePokemon = async function getPokemon(
+export const getSinglePokemon = async function getPokemon(
   url: string
 ): Promise<Pokemon> {
   const dataResponse = await fetch(url);

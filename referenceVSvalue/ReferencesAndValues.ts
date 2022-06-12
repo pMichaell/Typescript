@@ -61,3 +61,5 @@ sorting.sort((a, b) => a - b);
 console.log(sorting);
 console.log(sorting.sort((a, b) => a - b))
 console.log(sorting.sort((a, b) => b - a))
+
+
