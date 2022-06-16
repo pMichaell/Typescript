@@ -27,4 +27,8 @@ class MutableSet<T> extends Set<T> {
 const mutableSet = new MutableSet([1, 2, 3]).add(4);
 console.log(mutableSet);
 
+const test = null;
+
+console.log(test ?? "");
+
 export {};
