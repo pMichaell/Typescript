@@ -5,10 +5,11 @@ const API_URL = "https://pokeapi.co/api/v2/pokemon";
 
 //specify promise return type
 
-export const getPokemonList = async function getPokemonList(): Promise<PokemonList> {
-  const listResp = await fetch(API_URL);
-  return await listResp.json();
-};
+export const getPokemonList =
+  async function getPokemonList(): Promise<PokemonList> {
+    const listResp = await fetch(API_URL);
+    return await listResp.json();
+  };
 
 export const getSinglePokemon = async function getPokemon(
   url: string
@@ -69,9 +70,9 @@ const getFirstPokemon = async function getFirstPokemon(): Promise<Pokemon> {
       console.log(pokemon.name);
     }
     /* list.results.reduce<Promise<unknown>>(async (promise, pokemon) => {
-      await promise;
-      return getSinglePokemon(pokemon.url);
-    }, Promise.resolve(undefined));*/
+          await promise;
+          return getSinglePokemon(pokemon.url);
+        }, Promise.resolve(undefined));*/
   } catch (error) {
     console.error(error);
   }
