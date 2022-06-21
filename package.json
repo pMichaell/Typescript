@@ -7,7 +7,7 @@
   "dependencies": {
     "@supercharge/promise-pool": "^2.1.0",
     "axios": "^0.27.2",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "prettier": "^2.6.2"
   }
 }

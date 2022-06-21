@@ -32,4 +32,15 @@ let [firstEl, secondEl, thirdEl, fourthEl = 2137] = myTuple;
 console.log(fourthEl);
 console.log(firstEl);
 
+//swapping variables
+a = 2;
+b = 3;
+[b, a] = [a, b];
+console.log(`a:${a}, b:${b}`);
+
+//swapping array elements
+let arr = [1, 2, 3];
+[arr[1], arr[0]] = [arr[0], arr[1]];
+console.log(arr);
+
 export {};
