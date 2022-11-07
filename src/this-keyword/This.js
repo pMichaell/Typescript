@@ -48,9 +48,9 @@ const myDog = Object.create({
   sayName() {
     console.log(this === myDog); // => true
     return this.name;
-  }
+  },
 });
-myDog.name = 'Milo';
+myDog.name = "Milo";
 // method invocation. this is myDog
 myDog.sayName(); // => 'Milo'
 
@@ -64,16 +64,15 @@ class Planet {
   }
 }
 
-const earth = new Planet('earth');
-console.log(earth.getName())
+const earth = new Planet("earth");
+console.log(earth.getName());
 
 //this is not method invocation anymore, it is function invocation
 //this context has been lost
 try {
   const getName = earth.getName;
-  console.log(getName())
-} catch (e) {
-}
+  console.log(getName());
+} catch (e) {}
 //fix this
 const getNameWithThis = earth.getName.bind(earth);
 console.log(getNameWithThis());
@@ -81,9 +80,9 @@ console.log(getNameWithThis());
 function Pet(type, legs) {
   this.type = type;
   this.legs = legs;
-  this.logInfo = function() {
+  this.logInfo = function () {
     console.log(`The ${this.type} has ${this.legs} legs`);
-  }
+  };
 }
 
 function Pet2(type, legs) {
@@ -92,9 +91,10 @@ function Pet2(type, legs) {
   this.logInfo = () => {
     //use anonymous function to bind 'this' lexically
     console.log(`The ${this.type} has ${this.legs} legs`);
-  }
+  };
 }
-const myCat = new Pet('Cat', 4);
+
+const myCat = new Pet("Cat", 4);
 // logs "The undefined has undefined legs"
 // or throws a TypeError in strict mode
 // function is detached from object when passed as parameter
@@ -102,4 +102,25 @@ const myCat = new Pet('Cat', 4);
 setTimeout(myCat.logInfo, 100);
 
 //fix this
-setTimeout(myCat.logInfo.bind(myCat), 100)
+setTimeout(myCat.logInfo.bind(myCat), 100);
+
+/*const obj = {
+  bar: 12,
+  foo() {
+    setTimeout(function () {
+    this will be undefined
+      console.log(this.bar);
+    });
+  },
+};*/
+
+const obj = {
+  bar: 12,
+  foo() {
+    setTimeout(() => {
+      console.log(this.bar);
+    });
+  },
+};
+
+obj.foo();
