@@ -6,7 +6,7 @@ const ex1 = function ex1() {
 }
 
 const ex2 = function ex2() {
-    let myArray = [ "Ryu", "Ken", "Chun-Li", "Cammy", "Guile", "Sakura", "Sagat", "Juri" ];
+    let myArray = ["Ryu", "Ken", "Chun-Li", "Cammy", "Guile", "Sakura", "Sagat", "Juri"];
     myArray.pop();
     myArray.push("newName1", "newName2");
     myArray = myArray.map((value, index) => value + ` (${index})`)
@@ -15,7 +15,7 @@ const ex2 = function ex2() {
 }
 
 const ex3 = function ex3() {
-    const birds = [ "Parrots", "Falcons", "Eagles", "Emus", "Caracaras", "Egrets" ];
+    const birds = ["Parrots", "Falcons", "Eagles", "Emus", "Caracaras", "Egrets"];
     let index = birds.findIndex(bird => bird === "Eagles");
     birds.splice(index, 1);
     console.log(birds);
@@ -24,3 +24,17 @@ const ex3 = function ex3() {
 }
 
 ex3();
+
+
+const dunno: unknown = 'lalala'
+if (typeof dunno === 'string') {
+    console.log(dunno.length);
+}
+
+
+type intersectionType = { first: () => void } & { second: () => void }
+type unionType = { first: () => void | string }
+
+const consumeUnionType = (arg: unionType) => {
+    arg?.first();
+}
